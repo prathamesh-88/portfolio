@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Date from '../components/date';
-import utilStyles from '../styles/utils.module.css';
-import { AppProps } from '@/types';
+import Link from "next/link";
+import Date from "../components/date";
+import utilStyles from "../styles/utils.module.css";
+import { AppProps } from "@/types";
 
-export default function Articles({ allPostsData } : AppProps) {
+export default function Articles({ allPostsData }: AppProps) {
   return (
     <div className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
       <h2 className={utilStyles.headingLg}>Articles</h2>

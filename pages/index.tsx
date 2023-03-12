@@ -23,19 +23,37 @@ export default function Home({ allPostsData }: AppProps) {
       </Head>
       <section className={styles.intro}>
         <p className={`${utilStyles.headingMd}`}>
-          Hi 👋, I'm Prathamesh Tamanekar.
+          Hi{" "}
+          <span role="image" className="waving-hand">
+            👋
+          </span>
+          , I&apos;m Prathamesh Tamanekar.
         </p>
         <ul>
           <li>
-            I am a <strong>Backend Developer</strong> at <a href="https://wingify.com/"><strong>Wingify</strong></a> contributing in the development of <strong><a href="https://vwo.com/">VWO</a></strong>.
+            I am a <strong>Backend Developer</strong> at
+            <a href="https://wingify.com/">
+              {" "}
+              <strong>Wingify</strong>
+            </a>{" "}
+            contributing towards the development of{" "}
+            <strong>
+              <a href="https://vwo.com/">VWO</a>
+            </strong>
+            .
           </li>
-          <li>📝 I am open to work on any collaborative project.</li>
           <li>
-            🤖 Interested in Artificial Intelligence, Machine learning and Web
+            <span role="image" className="pencil-paper">
+              📝
+            </span>{" "}
+            I am open to work on any collaborative project.
+          </li>
+          <li>
+            <span role="image" className="robot">
+              🤖
+            </span>{" "}
+            Interested in Artificial Intelligence, Machine learning and Web
             Application Development.
-          </li>
-          <li>
-            📫 How to reach me <a href="mailto:prathamt3108@gmail.com">prathamt3108@gmail.com</a>
           </li>
         </ul>
       </section>

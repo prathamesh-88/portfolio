@@ -1,6 +1,6 @@
 ---
-title: 'Bundling and Code-Splitting'
-date: '2023-02-07'
+title: "Bundling and Code-Splitting"
+date: "2023-02-07"
 ---
 
 Greetings fellow web developers! Have you been struggling with slow load times and sluggish application responsiveness? Fear not, the answer to your problems lies within the power of web bundlers. But what exactly are these mysterious frameworks, and how can you harness their potential to enhance your web applications?
@@ -13,7 +13,7 @@ Browsing the web can be a frustrating experience if you're stuck waiting for a s
 
 When a browser tries to load a web application that is made up of multiple modules, sub-modules, third-party dependencies and other components, it needs to request each of these files individually. And, as you can imagine, this process can be quite slow and cumbersome. This can lead to longer load times, decreased application responsiveness, and a generally frustrating user experience.
 
-But with bundling, we can turn this problem around! 
+But with bundling, we can turn this problem around!
 
 ## The Secret to Faster Load Times: Bundling
 
@@ -29,9 +29,9 @@ Code splitting is a technique that breaks down the big bundled file into smaller
 
 ## Harnessing the Power of Bundling and Code Splitting
 
-With numerous web bundlers available on the market, you'll be able to find one that caters to your project's specific needs and level of expertise. 
+With numerous web bundlers available on the market, you'll be able to find one that caters to your project's specific needs and level of expertise.
 
-Some popular JavaScript bundlers include: 
+Some popular JavaScript bundlers include:
 
 1. [Webpack](https://webpack.js.org/)
 2. [Browserify](https://browserify.org/)
