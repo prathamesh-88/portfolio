@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.logo a {
+    color: var(--text-color);
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.navGroup {
+    display: flex;
+}
+
+.navItem {
+    margin: 1rem;
+}
+
+.active {
+    text-decoration: underline red;
+}
+
+.navItem a{
+    color: var(--text-color);
+}
