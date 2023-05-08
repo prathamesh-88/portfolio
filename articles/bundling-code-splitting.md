@@ -1,6 +1,7 @@
 ---
 title: "Bundling and Code-Splitting"
 date: "2023-02-07"
+tags: "Frontend Development, Optimizations"
 ---
 
 Greetings fellow web developers! Have you been struggling with slow load times and sluggish application responsiveness? Fear not, the answer to your problems lies within the power of web bundlers. But what exactly are these mysterious frameworks, and how can you harness their potential to enhance your web applications?

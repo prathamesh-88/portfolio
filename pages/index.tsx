@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "@/components/layout";
+import Layout, { siteTitle } from "@/components/layouts/commonLayout";
 import styles from "../styles/home.module.css";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../utility/posts";
@@ -22,38 +22,47 @@ export default function Home({ allPostsData }: AppProps) {
         <title>{siteTitle}</title>
       </Head>
       <section className={styles.intro}>
-        <p className={`${utilStyles.headingMd}`}>
+        <div className={`${styles.name}`}>
           Hi{" "}
           <span role="image" className="waving-hand">
             👋
           </span>
           , I&apos;m Prathamesh Tamanekar.
-        </p>
+        </div>
         <ul>
           <li>
-            I am a <strong>Backend Developer</strong> at
-            <a href="https://wingify.com/">
-              {" "}
-              <strong>Wingify</strong>
-            </a>{" "}
-            contributing towards the development of{" "}
-            <strong>
+            As a <strong>Backend Web Developer</strong> at{" "}
+            <b>
+              <a href="https://wingify.com/">Wingify</a>
+            </b>
+            , I contribute towards enhancing the functionality of{" "}
+            <b>
               <a href="https://vwo.com/">VWO</a>
-            </strong>
-            .
+            </b>
+            . My job is to identify and seamlessly integrate third-party
+            applications into our platform, ensuring that our users have access
+            to the most innovative and effective tools available.
           </li>
           <li>
-            <span role="image" className="pencil-paper">
-              📝
-            </span>{" "}
-            I am open to work on any collaborative project.
+            As a Web Developer, I am constantly inspired by the ever-evolving
+            nature of web technologies and their potential to revolutionize the
+            digital landscape. I have honed my skills in programming languages
+            such as Python, TypeScript, GO and PHP, which have enabled me to
+            develop robust, scalable, and secure backend systems that power
+            high-performance websites and web applications.
           </li>
           <li>
-            <span role="image" className="robot">
-              🤖
-            </span>{" "}
-            Interested in Artificial Intelligence, Machine learning and Web
-            Application Development.
+            My passion for Machine Learning stems from its ability to provide
+            actionable insights and predictive analytics that drive informed
+            decision-making. With a deep understanding of statistical
+            algorithms, data analysis, and neural networks, I have developed ML
+            models that have solved complex problems and provided strategic
+            advantages to businesses in various industries.
+          </li>
+          <li>
+            My pet projects can be viewed in the <strong>Projects</strong>{" "}
+            section. Always open to work on any interesting, collaborative
+            project.
           </li>
         </ul>
       </section>

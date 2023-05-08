@@ -1,4 +1,5 @@
 import Image from "next/image";
+import DownloadButton from "./downloadButton";
 import utilStyles from "@/styles/utils.module.css";
 import styles from "@/styles/profileBanner.module.css";
 
@@ -18,6 +19,9 @@ export default function ProfileBanner() {
         <span className={styles.designation}>Full Stack Web Developer</span>
         <span className={styles.designation}>Machine Learning Enthusiast</span>
         <span className={styles.designation}></span>
+      </div>
+      <div className={`${styles.downloadButton}`}>
+        <DownloadButton />
       </div>
       <div className={styles.socialIcons}>
         <div className={`${styles.icon}`}>

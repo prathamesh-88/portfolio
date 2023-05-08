@@ -1,3 +1,15 @@
+.width100 {
+  width: 100%;
+}
+
+.width80 {
+  width: 80%;
+}
+
+.width50 {
+  width: 50%;
+}
+
 .heading2Xl {
   font-size: 2.5rem;
   line-height: 1.2;
@@ -43,6 +55,10 @@
   margin: 0;
 }
 
+.list a:hover {
+  text-decoration: none;
+}
+
 .listItem {
   margin: 0 0 1.25rem;
 }
@@ -55,5 +71,35 @@
   border-radius: 5px;
   background: var(--secondary-color);
   color: var(--text-color);
+}
+
+.card:hover {
+  border-bottom: 1px solid var(--text-color);
+}
+
+.cardPadding {
   padding: 0.4rem 1rem;
+}
+
+.smallerText {
+  font-size: 01rem;
+}
+
+.justifyText {
+  text-align: justify;
+}
+
+.btn {
+  height: 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: solid 2px var(--text-color);
+  color: var(--text-color);
+}
+
+.btn:hover {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+  cursor: pointer;
 }

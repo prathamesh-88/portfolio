@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Date from "../../components/date";
-import Layout from "../../components/layout";
+import Layout from "../../components/layouts/commonLayout";
 import utilStyles from "../../styles/utils.module.css";
 import { getAllPostIds, getPostData } from "../../utility/posts";
 import { postFormat } from "@/types";
@@ -16,7 +16,10 @@ export default function Post({ postData }: { postData: postFormat }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div
+          className={utilStyles.justifyText}
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </article>
     </Layout>
   );

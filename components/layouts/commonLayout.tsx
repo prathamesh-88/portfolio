@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Navbar from "./navbar";
-import ProfileBanner from "./profileBanner";
-import styles from "../styles/layout.module.css";
-import utilStyles from "../styles/utils.module.css";
+import Navbar from "../navbar";
+import ProfileBanner from "../profileBanner";
+import styles from "../../styles/layout.module.css";
+import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
 
 export const siteTitle = "Prathamesh Tamanekar";
@@ -35,11 +35,7 @@ export default function Layout({
         <Navbar />
       </div>
       <div className={styles.contentLayout}>
-        {pageType !== "home" && (
-          <div
-            className={`${styles.articlesContainer} ${utilStyles.card}`}
-          ></div>
-        )}
+        <div className={`${styles.articlesContainer}`}></div>
         <div className={`${styles.contentContainer}`}>
           <main>{children}</main>
           {pageType !== "home" && (

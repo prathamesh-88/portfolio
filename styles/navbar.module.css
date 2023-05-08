@@ -8,6 +8,7 @@
 .logo {
   font-size: 1.2rem;
   font-weight: bold;
+  display: flex;
 }
 
 .logo a {
@@ -16,6 +17,15 @@
 
 .logo a:hover {
   text-decoration: none;
+}
+
+.logo .lightSwitch{
+  margin-left: 0.5rem;
+}
+
+.logo .lightSwitch svg{
+  fill: var(--text-color);
+  height: 1.5rem;
 }
 
 .navGroup {
@@ -32,4 +42,10 @@
 
 .navItem a {
   color: var(--text-color);
+}
+
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    width: 100%;
+  }
 }

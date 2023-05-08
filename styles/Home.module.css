@@ -1,4 +1,41 @@
+@counter-style repeating-emoji {
+  system: cyclic;
+  symbols: "👨‍💻" "💻" "🤖" "📝";
+  suffix: " ";
+}
+
 .intro {
   display: flex;
   flex-direction: column;
+}
+
+.intro ul {
+  margin: 0;
+  margin-top: 1rem;
+  list-style-type: none;
+}
+
+.intro ul li{
+  font-size: 1.1rem;
+  list-style: repeating-emoji;
+  text-align: justify;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+}
+
+.intro ul li a {
+    color: var(--text-color);
+}
+
+.intro ul li a:hover {
+    text-decoration: none;
+}
+
+.intro .name {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+
 }

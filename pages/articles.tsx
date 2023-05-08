@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "@/components/layout";
+import Layout, { siteTitle } from "@/components/layouts/commonLayout";
 import { getSortedPostsData } from "../utility/posts";
 import Articles from "@/components/articles";
 import { AppProps } from "@/types";
