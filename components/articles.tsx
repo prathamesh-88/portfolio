@@ -10,11 +10,10 @@ export default function Articles({ allPostsData }: AppProps) {
       <ul className={`${utilStyles.list}`}>
         {allPostsData &&
           allPostsData.map(({ id, date, title, content }) => (
-            <li
-              className={`${utilStyles.listItem} ${utilStyles.card} ${utilStyles.cardPadding}`}
-              key={id}
-            >
-              <Link href={`/articles/${id}`}>
+            <Link href={`/articles/${id}`} key={id}>
+              <li
+                className={`${utilStyles.listItem} ${utilStyles.card} ${utilStyles.cardPadding}`}
+              >
                 {title}
                 <br />
                 <p className={utilStyles.smallerText}>
@@ -23,8 +22,8 @@ export default function Articles({ allPostsData }: AppProps) {
                 <small className={utilStyles.lightText}>
                   <Date dateString={date} />
                 </small>
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
       </ul>
     </div>
