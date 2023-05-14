@@ -3,11 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import { PostFormat } from "@/types";
+import { Article } from "@/types";
 
 const postsDirectory = path.join(process.cwd(), "articles");
 
-export function getSortedPostsData(): PostFormat[] {
+export function getSortedPostsData(): Article[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {

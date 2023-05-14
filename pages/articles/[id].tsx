@@ -3,9 +3,9 @@ import Date from "../../components/date";
 import Layout from "../../components/layouts/commonLayout";
 import utilStyles from "../../styles/utils.module.css";
 import { getAllPostIds, getPostData } from "../../utility/posts";
-import { PostFormat } from "@/types";
+import { Article } from "@/types";
 
-export default function Post({ postData }: { postData: PostFormat }) {
+export default function Post({ postData }: { postData: Article }) {
   return (
     <Layout pageType="blog">
       <Head>
