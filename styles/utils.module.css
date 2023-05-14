@@ -73,10 +73,6 @@
   color: var(--text-color);
 }
 
-.card:hover {
-  border-bottom: 1px solid var(--text-color);
-}
-
 .cardPadding {
   padding: 0.4rem 1rem;
 }

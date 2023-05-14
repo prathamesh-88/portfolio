@@ -3,11 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import { postFormat } from "@/types";
+import { PostFormat } from "@/types";
 
 const postsDirectory = path.join(process.cwd(), "articles");
 
-export function getSortedPostsData(): postFormat[] {
+export function getSortedPostsData(): PostFormat[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -18,16 +18,21 @@ export function getSortedPostsData(): postFormat[] {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
+    // Extract Content
+    const content = matterResult.content;
+    // Extract Data
+    const { title, date } = matterResult.data;
     // Combine the data with the id
     return {
       id,
-      content: matterResult.content,
-      ...matterResult.data,
+      content,
+      title,
+      date,
     };
   });
   // Sort posts by date
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
+    if (a.date && b.date && a.date < b.date) {
       return 1;
     } else {
       return -1;

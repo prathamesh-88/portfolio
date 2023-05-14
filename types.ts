@@ -1,17 +1,23 @@
-export interface postFormat {
+export interface Article {
   id: string;
   date: string;
   title: string;
   content?: string;
-  contentHtml: string;
+  contentHtml?: string;
 }
 
 export interface Project {
-  id: number;
-  name: string;
+  id: string;
+  link: string;
+  date: string;
+  title: string;
+  description: string;
+  image?: string;
+}
+export interface ArticlesProps {
+  allArticlesData: Article[];
 }
 
-export interface AppProps {
-  allPostsData?: postFormat[];
-  projectData?: Project[];
+export interface ProjectsProps {
+  allProjectsData: Project[];
 }

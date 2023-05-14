@@ -1,21 +1,21 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "@/components/layouts/commonLayout";
 import styles from "../styles/home.module.css";
-import utilStyles from "../styles/utils.module.css";
+import utilStyles from "@/styles/utils.module.css";
 import { getSortedPostsData } from "../utility/posts";
-import { AppProps } from "@/types";
 import Articles from "@/components/articles";
+import { ArticlesProps } from "@/types";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allArticlesData = getSortedPostsData();
   return {
     props: {
-      allPostsData,
+      allArticlesData,
     },
   };
 }
 
-export default function Home({ allPostsData }: AppProps) {
+export default function Home({ allArticlesData }: ArticlesProps) {
   return (
     <Layout pageType="home">
       <Head>
@@ -66,7 +66,8 @@ export default function Home({ allPostsData }: AppProps) {
           </li>
         </ul>
       </section>
-      <Articles allPostsData={allPostsData} />
+      <h2 className={`${utilStyles.headingLg}`}>Articles</h2>
+      <Articles allArticlesData={allArticlesData} />
     </Layout>
   );
 }

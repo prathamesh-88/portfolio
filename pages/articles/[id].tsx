@@ -3,9 +3,9 @@ import Date from "../../components/date";
 import Layout from "../../components/layouts/commonLayout";
 import utilStyles from "../../styles/utils.module.css";
 import { getAllPostIds, getPostData } from "../../utility/posts";
-import { postFormat } from "@/types";
+import { PostFormat } from "@/types";
 
-export default function Post({ postData }: { postData: postFormat }) {
+export default function Post({ postData }: { postData: PostFormat }) {
   return (
     <Layout pageType="blog">
       <Head>
@@ -18,7 +18,7 @@ export default function Post({ postData }: { postData: postFormat }) {
         </div>
         <div
           className={utilStyles.justifyText}
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml ?? "" }}
         />
       </article>
     </Layout>

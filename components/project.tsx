@@ -1,37 +1,41 @@
-import Link from "next/link";
-import React from "react";
 import Image from "next/image";
+import { Project } from "@/types";
 import Date from "./date";
-import styles from "../styles/project.module.css";
-import utilStyles from "../styles/utils.module.css";
-import { AppProps } from "../types";
+import styles from "@/styles/project.module.css";
+import utilStyles from "@/styles/utils.module.css";
 
-export default function Project({ projectData }: AppProps) {
+interface ProjectProps {
+  projectData: Project;
+}
+
+export default function ProjectComponent({ projectData }: ProjectProps) {
+  const { id, date, title, link, description, image } = projectData;
   return (
-    <div className={`${utilStyles.card}`}>
-      <div className={`${styles.projectContainer}`}>
+    <a href={link} target="_blank" key={id} rel="noreferrer">
+      <div
+        className={`${utilStyles.listItem} ${utilStyles.card} ${styles.projectContainer}`}
+      >
         <div className={`${styles.imageContainer}`}>
           <Image
-            priority
-            height={500}
-            width={500}
-            className={styles.image}
-            src="/images/profile.jpg"
+            className={`${styles.image}`}
+            src={image ?? "/projects/image.jpg"}
+            height={150}
+            width={150}
             alt=""
           />
         </div>
         <div className={`${styles.metadata}`}>
-          <div className={`${styles.title}`}>
-            <h2 className={`${utilStyles.headingLg}`}>Prathamesh</h2>
+          <div className={`${utilStyles.headingMd} ${styles.title}`}>
+            {title}
           </div>
-          <div className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            cum numquam harum, officiis, ipsa distinctio temporibus,
-            consequuntur reiciendis ea dignissimos id laborum aliquid eos
-            placeat quo aliquam incidunt delectus rem.
-          </div>
+          <p className={`${styles.description} ${utilStyles.smallerText}`}>
+            {description}
+          </p>
+          <small className={`${utilStyles.lightText} ${styles.date}`}>
+            <Date dateString={date} />
+          </small>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
