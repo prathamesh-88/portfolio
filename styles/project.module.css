@@ -29,3 +29,29 @@
 .metadata .date {
   height: 20%;
 }
+
+@media only screen and (max-width: 1000px) {
+  .projectContainer {
+    height: fit-content;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+
+  .metadata {
+    width: 100%;
+  }
+
+  .metadata .title {
+    height: fit-content;
+  }
+
+  .metadata .description {
+    height: fit-content;
+  }
+
+  .metadata .date {
+    height: fit-content;
+  }
+}
