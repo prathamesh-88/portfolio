@@ -22,7 +22,7 @@ export async function getStaticProps() {
 
 export default function Home({ allArticlesData }: ArticlesProps) {
   return (
-    <Layout pageType="home">
+    <Layout pageType="articles">
       <Head>
         <title>{siteTitle}</title>
       </Head>
