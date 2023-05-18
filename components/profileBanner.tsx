@@ -2,6 +2,7 @@ import Image from "next/image";
 import DownloadButton from "./downloadButton";
 import utilStyles from "@/styles/utils.module.css";
 import styles from "@/styles/profileBanner.module.css";
+import { event } from "@/lib/gtag";
 
 export default function ProfileBanner() {
   return (
@@ -20,7 +21,12 @@ export default function ProfileBanner() {
         <span className={styles.designation}>Machine Learning Enthusiast</span>
         <span className={styles.designation}></span>
       </div>
-      <div className={`${styles.downloadButton}`}>
+      <div
+        className={`${styles.downloadButton}`}
+        onClick={() => {
+          event("resume_viewed", {});
+        }}
+      >
         <DownloadButton />
       </div>
       <div className={styles.socialIcons}>

@@ -21,10 +21,3 @@ export interface ArticlesProps {
 export interface ProjectsProps {
   allProjectsData: Project[];
 }
-
-export interface GTagEvent {
-  action: string;
-  parameters?: {
-    [key: string]: any;
-  };
-}
