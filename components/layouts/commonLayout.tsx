@@ -34,7 +34,7 @@ export default function Layout({
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://prathameshtamanekar.vercel.app/preview.png"
+            content="https://prathameshtamanekar.vercel.app/images/preview.png"
           />
           <meta
             property="og:title"
@@ -52,7 +52,7 @@ export default function Layout({
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:image"
-            content="https://prathameshtamanekar.vercel.app/preview.png"
+            content="https://prathameshtamanekar.vercel.app/images/preview.png"
           />
           <meta
             name="twitter:title"
@@ -70,7 +70,10 @@ export default function Layout({
             property="twitter:domain"
             content="prathameshtamanekar.vercel.app"
           />
-          <meta name="twitter:image:alt" content="SmoothPlug Landing Page" />
+          <meta
+            name="twitter:image:alt"
+            content="Prathamesh Tamanekar - Portfolio"
+          />
           <meta name="twitter:site" content="@pratham_eshh" />
           <meta name="twitter:creator" content="@pratham_eshh" />
           <meta name="twitter:creator:id" content="@pratham_eshh" />
