@@ -2,72 +2,77 @@ import Head from "next/head";
 import Layout, { siteTitle } from "@/components/layouts/commonLayout";
 import styles from "@/styles/Home.module.css";
 import utilStyles from "@/styles/utils.module.css";
-import { getSortedPostsData } from "../utility/posts";
+import { getBlogPosts } from "../utility/posts";
+import { getProjects } from "@/utility/projects";
 import Articles from "@/components/articles";
-import { ArticlesProps } from "@/types";
+import Projects from "@/components/projects";
+import { HomeProps } from "@/types";
+import { Roboto_Condensed } from "@next/font/google";
+
+const robotoCondensed = Roboto_Condensed({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 export async function getStaticProps() {
-  const allArticlesData = getSortedPostsData();
+  const allArticlesData = await getBlogPosts();
+  const allProjectsData = getProjects();
   return {
     props: {
       allArticlesData,
+      allProjectsData,
     },
   };
 }
 
-export default function Home({ allArticlesData }: ArticlesProps) {
+export default function Home({ allArticlesData, allProjectsData }: HomeProps) {
   return (
     <Layout pageType="home">
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={styles.intro}>
-        <div className={`${styles.name}`}>
-          Hi{" "}
-          <span role="image" className="waving-hand">
-            👋
-          </span>
-          , I&apos;m Prathamesh Tamanekar.
+        <div className={`${styles.name} ${robotoCondensed.className}`}>
+          Prathamesh <span className={utilStyles.accent}>Tamanekar</span>
         </div>
         <ul>
           <li>
-            As a <strong>Backend Web Developer</strong> at{" "}
-            <b>
-              <a href="https://wingify.com/">Wingify</a>
-            </b>
-            , I contribute towards enhancing the functionality of{" "}
-            <b>
-              <a href="https://vwo.com/">VWO</a>
-            </b>
-            . My job is to identify and seamlessly integrate third-party
-            applications into our platform, ensuring that our users have access
-            to the most innovative and effective tools available.
+            <span className={styles.highlight}>Backend Developer</span> with a
+            focus on <span className={styles.highlight}>scalability</span> and{" "}
+            <span className={styles.highlight}>reliability</span>.
+          </li>
+
+          <li>
+            Currently, working as Software Engineer II at{" "}
+            <a href="https://vwo.com/" className={styles.highlight}>
+              VWO
+            </a>
+          </li>
+
+          <li>
+            I prefer working in <span className={styles.highlight}>Go</span>,{" "}
+            <span className={styles.highlight}>Python</span> and{" "}
+            <span className={styles.highlight}>TypeScript</span>.
           </li>
           <li>
-            As a Web Developer, I am constantly inspired by the ever-evolving
-            nature of web technologies and their potential to revolutionize the
-            digital landscape. I have honed my skills in programming languages
-            such as Python, TypeScript, GO and PHP, which have enabled me to
-            develop robust, scalable, and secure backend systems that power
-            high-performance websites and web applications.
-          </li>
-          <li>
-            My passion for Machine Learning stems from its ability to provide
-            actionable insights and predictive analytics that drive informed
-            decision-making. With a deep understanding of statistical
-            algorithms, data analysis, and neural networks, I have developed ML
-            models that have solved complex problems and provided strategic
-            advantages to businesses in various industries.
-          </li>
-          <li>
-            My pet projects can be viewed in the <strong>Projects</strong>{" "}
-            section. Always open to work on any interesting, collaborative
-            project.
+            I have experience working on{" "}
+            <span className={styles.highlight}>large-scale systems</span> that
+            handle large amounts of traffic and data.
           </li>
         </ul>
       </section>
-      <h2 className={`${utilStyles.headingLg}`}>Articles</h2>
+      <h2
+        className={` ${styles.articlesHeading} ${utilStyles.headingXl} ${styles.highlight} ${robotoCondensed.className}`}
+      >
+        Latest Articles
+      </h2>
       <Articles allArticlesData={allArticlesData} />
+      <h2
+        className={` ${styles.articlesHeading} ${utilStyles.headingXl} ${styles.highlight} ${robotoCondensed.className}`}
+      >
+        Projects
+      </h2>
+      <Projects allProjectsData={allProjectsData} />
     </Layout>
   );
 }

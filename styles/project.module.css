@@ -14,23 +14,12 @@
 .metadata {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 75%;
   padding: 0.5rem 1rem;
 }
 
-.metadata .title {
-  height: 20%;
-}
-
-.metadata .description {
-  height: 60%;
-}
-
-.metadata .date {
-  height: 20%;
-}
-
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 768px) {
   .projectContainer {
     height: fit-content;
   }

@@ -1,14 +1,12 @@
 import "../styles/global.css";
 import Script from "next/script";
-import type { AppProps, NextWebVitalsMetric } from "next/app";
+import type { AppProps } from "next/app";
 import { GA_TRACKING_ID } from "@/lib/gtag";
+import { ChakraProvider } from "@chakra-ui/react";
 
-// export function reportWebVitals(metric: NextWebVitalsMetric) {
-//   console.log(metric);
-// }
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ChakraProvider>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
@@ -24,6 +22,6 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <Component {...pageProps} />
-    </>
+    </ChakraProvider>
   );
 }

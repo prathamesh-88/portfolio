@@ -1,9 +1,9 @@
 export interface Article {
-  id: string;
+  id: number;
+  url: string;
   date: string;
   title: string;
-  content?: string;
-  contentHtml?: string;
+  description: string;
 }
 
 export interface Project {
@@ -19,5 +19,10 @@ export interface ArticlesProps {
 }
 
 export interface ProjectsProps {
+  allProjectsData: Project[];
+}
+
+export interface HomeProps {
+  allArticlesData: Article[];
   allProjectsData: Project[];
 }

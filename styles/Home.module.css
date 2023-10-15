@@ -1,9 +1,3 @@
-@counter-style repeating-emoji {
-  system: cyclic;
-  symbols: "👨‍💻" "💻" "🤖" "📝";
-  suffix: " ";
-}
-
 .intro {
   display: flex;
   flex-direction: column;
@@ -13,29 +7,53 @@
   margin: 0;
   margin-top: 1rem;
   list-style-type: none;
+  /* font-size: ; */
+  /* padding-left: 10px; Indent the list item */
 }
 
-.intro ul li{
-  font-size: 1.1rem;
-  list-style: repeating-emoji;
+.intro ul li {
+  font-size: 1.2rem;
   text-align: justify;
-  line-height: normal;
+  line-height: 1.3;
   margin-bottom: 0.5rem;
 }
 
+.intro ul li::before {
+  content: "#";
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
 .intro ul li a {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
 .intro ul li a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .intro .name {
-  font-size: 2rem;
-  text-align: center;
+  font-size: 6rem;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
-@media only screen and (max-width: 1000px) {
+.highlight {
+  border-bottom: 3px solid var(--accent-color);
+}
 
+.articlesHeading {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .intro .name {
+    font-size: 3rem;
+    margin: 2rem 0;
+  }
 }

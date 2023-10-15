@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "@/components/layouts/commonLayout";
-import { getSortedPostsData } from "../utility/posts";
+import { getBlogPosts } from "../utility/posts";
 import Articles from "@/components/articles";
 import { Article } from "@/types";
 
@@ -9,7 +9,7 @@ interface ArticlesProps {
 }
 
 export async function getStaticProps() {
-  const allArticlesData = getSortedPostsData();
+  const allArticlesData = await getBlogPosts();
   return {
     props: {
       allArticlesData,

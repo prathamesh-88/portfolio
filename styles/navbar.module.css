@@ -6,10 +6,22 @@
   margin-bottom: 10px;
 }
 
+.navbar nav a {
+  color: var(--text-color);
+  border-radius: 0;
+  font-size: 1.1rem;
+}
+
+.navbar nav a:hover {
+  border-bottom: 2px solid var(--accent-color);
+}
+
 .logo {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: 700;
   display: flex;
+  /* letter-spacing: 3px; */
+  /* text-transform: uppercase; */
 }
 
 .logo a {
@@ -20,38 +32,19 @@
   text-decoration: none;
 }
 
-.logo .lightSwitch{
+.logo .lightSwitch {
   margin-left: 0.5rem;
 }
 
-.logo .lightSwitch svg{
+.logo .lightSwitch svg {
   fill: var(--text-color);
   height: 1.5rem;
 }
 
-.navGroup {
-  display: flex;
-}
-
-.navItem {
-  margin: 1rem;
-}
-
-.active {
-  text-decoration: underline red;
-}
-
-.navItem a {
-  color: var(--text-color);
-}
-
-
-.navItem a:hover {
-  text-decoration: none;
-}
-
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 768px) {
   .navbar {
+    display: block;
     width: 100%;
+    padding: 0;
   }
 }

@@ -1,12 +1,19 @@
+.profilePicture {
+  width: 80%;
+  border-radius: 5px;
+  box-shadow: var(--accent-color) 20px 20px;
+}
+
 .nameSection {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .nameSection .name {
-  font-weight: bold;
-  font-size: 1.3rem;
+  /* font-weight: 700; */
+  font-size: 1.4rem;
   margin-bottom: 0;
   padding-bottom: 0;
   text-align: center;
@@ -14,7 +21,7 @@
 
 .nameSection .designation {
   color: var(--subtext-color);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .socialIcons {

@@ -1,72 +1,36 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import { Article } from "@/types";
+import fetch from "node-fetch";
 
-const postsDirectory = path.join(process.cwd(), "articles");
-
-export function getSortedPostsData(): Article[] {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
-    // Extract Content
-    const content = matterResult.content;
-    // Extract Data
-    const { title, date } = matterResult.data;
-    // Combine the data with the id
-    return {
-      id,
-      content,
-      title,
-      date,
-    };
-  });
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date && b.date && a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+interface IDevToArticle {
+  type_of: string;
+  id: number;
+  title: string;
+  description: string;
+  url: string;
+  published_timestamp: string;
+  [k: string]: any;
 }
 
-export async function getPostData(id: String) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
-
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-  // Combine the data with the id
+function formatArticle(rawArticle: IDevToArticle): Article {
   return {
-    id,
-    contentHtml,
-    ...matterResult.data,
+    id: rawArticle.id,
+    date: rawArticle.published_timestamp,
+    url: rawArticle.url,
+    title: rawArticle.title,
+    description: rawArticle.description,
   };
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
-    };
+export async function getBlogPosts(): Promise<Article[]> {
+  if (!process.env.DEVTO_API_KEY) {
+    throw new Error("Dev.to API Key is not set");
+  }
+  const rawPostsResponse = await fetch("https://dev.to/api/articles/me", {
+    headers: {
+      "api-key": process.env.DEVTO_API_KEY,
+    },
   });
+  const rawPosts: IDevToArticle[] =
+    (await rawPostsResponse.json()) as IDevToArticle[];
+  return rawPosts.map((rawPost) => formatArticle(rawPost));
 }

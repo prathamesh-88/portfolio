@@ -1,34 +1,24 @@
 import Image from "next/image";
-import DownloadButton from "./downloadButton";
-import utilStyles from "@/styles/utils.module.css";
 import styles from "@/styles/profileBanner.module.css";
-import { event } from "@/lib/gtag";
+// import DownloadButton from "./downloadButton";
+// import { event } from "@/lib/gtag";
 
 export default function ProfileBanner() {
   return (
     <>
       <Image
         priority
-        src="/images/profile.jpg"
-        className={utilStyles.borderCircle}
-        height={144}
-        width={144}
+        src="/images/profile.png"
+        className={styles.profilePicture}
+        height={1080}
+        width={1080}
         alt=""
       />
       <div className={styles.nameSection}>
         <span className={styles.name}>Prathamesh Tamanekar</span>
-        <span className={styles.designation}>Full Stack Web Developer</span>
-        <span className={styles.designation}>Machine Learning Enthusiast</span>
-        <span className={styles.designation}></span>
+        <span className={styles.designation}>Backend Developer</span>
       </div>
-      <div
-        className={`${styles.downloadButton}`}
-        onClick={() => {
-          event("resume_viewed", {});
-        }}
-      >
-        <DownloadButton />
-      </div>
+
       <div className={styles.socialIcons}>
         <div className={`${styles.icon}`}>
           <a href="https://twitter.com/pratham_eshh">
@@ -52,9 +42,27 @@ export default function ProfileBanner() {
           </a>
         </div>
         <div className={`${styles.icon}`}>
-          <a href="https://prathamesht.medium.com/">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <path d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z" />
+          <a href="https://dev.to/prathamesht">
+            <svg
+              viewBox="0 0 512 512"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clipPath="url(#clip0_1_2)">
+                <path
+                  d="M435.2 0H76.8C34.3845 0 0 34.3845 0 76.8V435.2C0 477.615 34.3845 512 76.8 512H435.2C477.615 512 512 477.615 512 435.2V76.8C512 34.3845 477.615 0 435.2 0Z"
+                  fill="white"
+                />
+                <path
+                  d="M140.47 203.94H123.03V308.41H140.48C150.635 307.865 157.838 299.741 157.95 291V221.35C157.254 210.986 150.154 204.078 140.47 203.94ZM186.2 291.19C186.2 310 174.59 338.5 137.84 338.44H91.44V172.98H138.82C174.26 172.98 186.18 201.44 186.19 220.26L186.2 291.19ZM286.88 202.53H233.6V240.95H266.17V270.52H233.6V308.93H286.89V338.5H224.71C213.55 338.79 204.27 329.97 203.99 318.81V193.7C203.72 182.55 212.55 173.29 223.7 173.01H286.89L286.88 202.53ZM390.52 317.82C377.32 348.57 353.67 342.45 343.08 317.82L304.55 173.02H337.12L366.83 286.74L396.4 173.02H428.98L390.52 317.82Z"
+                  fill="black"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_2">
+                  <rect width="512" height="512" fill="white" />
+                </clipPath>
+              </defs>
             </svg>
           </a>
         </div>
@@ -66,6 +74,14 @@ export default function ProfileBanner() {
           </a>
         </div>
       </div>
+      {/* <div
+        className={`${styles.downloadButton}`}
+        onClick={() => {
+          event("resume_viewed", {});
+        }}
+      >
+        <DownloadButton />
+      </div> */}
     </>
   );
 }

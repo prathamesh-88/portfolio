@@ -3,8 +3,6 @@ body {
   padding: 0;
   margin: 0;
   width: 100vw;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 16px;
   overflow-x: hidden;
@@ -29,14 +27,17 @@ img {
 }
 
 :root {
-  --primary-color: black;
-  --secondary-color: #111111;
-  --text-color: white;
-  --subtext-color: grey;
+  --primary-color: #121212;
+  --secondary-color: #242424;
+  --text-color: rgb(238, 236, 236);
+  --subtext-color: rgb(167, 167, 167);
+  --accent-color: #40bfb9;
 }
 
 .light {
   --primary-color: white;
   --secondary-color: rgb(238, 237, 237);
   --text-color: black;
+  --subtext-color: grey;
+  --accent-color: #40bfb9;
 }

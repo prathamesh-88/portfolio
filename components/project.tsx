@@ -31,7 +31,7 @@ export default function ProjectComponent({ projectData }: ProjectProps) {
           <p className={`${styles.description} ${utilStyles.smallerText}`}>
             {description}
           </p>
-          <small className={`${utilStyles.lightText} ${styles.date}`}>
+          <small className={`${styles.date}`}>
             <Date dateString={date} />
           </small>
         </div>
