@@ -97,7 +97,11 @@ export default function Layout({
               </div>
             )}
           </div>
-          <div className={`${styles.bannerContainer}`}>
+          <div
+            className={`${styles.bannerContainer} ${
+              pageType == "home" ? "" : styles.mobileHidden
+            }`}
+          >
             <ProfileBanner />
           </div>
         </div>
