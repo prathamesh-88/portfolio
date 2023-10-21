@@ -56,8 +56,9 @@ export default function Home({ allArticlesData, allProjectsData }: HomeProps) {
           </li>
           <li>
             I have experience working on{" "}
-            <span className={styles.highlight}>large-scale systems</span> that
-            handle large amounts of traffic and data.
+            <span className={styles.highlight}>large-scale</span>,{" "}
+            <span className={styles.highlight}>data intensive</span>,{" "}
+            <span className={styles.highlight}>high-traffic</span> systems.
           </li>
         </ul>
       </section>
