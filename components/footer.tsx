@@ -59,13 +59,22 @@ export default function Footer() {
       >
         <Text>© Prathamesh Tamanekar.</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={""}>
+          <SocialButton
+            label={"Twitter"}
+            href={"https://twitter.com/pratham_eshh"}
+          >
             <FaTwitter />
           </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
+          <SocialButton
+            label={"LinkedIn"}
+            href={"https://www.linkedin.com/in/prathamesh-tamanekar/"}
+          >
             <FaLinkedin />
           </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
+          <SocialButton
+            label={"Instagram"}
+            href={"https://www.linkedin.com/in/prathamesh-tamanekar/"}
+          >
             <FaInstagram />
           </SocialButton>
           <SocialButton label={"Devto"} href="https://dev.to/prathamesht">
