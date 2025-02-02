@@ -1,26 +1,27 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60%;
-  margin-bottom: 10px;
-  min-width: 1100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 60%;
+	margin-bottom: 10px;
+	min-width: 1100px;
 }
 
 .navbar nav a {
-  color: var(--text-color);
-  border-radius: 0;
-  font-size: 1.1rem;
+	color: var(--text-color);
+	border-radius: 0;
+	font-size: 1.1rem;
 }
 
 .navbar nav a:hover {
-  border-bottom: 2px solid var(--accent-color);
+	border-bottom: 2px solid var(--accent-color);
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar {
-    display: block;
-    width: 100%;
-    padding: 0;
-  }
+	.navbar {
+		display: block;
+		width: 100%;
+		padding: 0;
+		min-width: 0;
+	}
 }
