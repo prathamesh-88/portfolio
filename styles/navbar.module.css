@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 60%;
   margin-bottom: 10px;
+  min-width: 1100px;
 }
 
 .navbar nav a {
