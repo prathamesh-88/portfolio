@@ -37,20 +37,34 @@ export default function Home({ allArticlesData, allProjectsData }: HomeProps) {
         </div>
         <ul>
           <li>
-            <span className={styles.highlight}>Backend Developer</span> with a
-            focus on <span className={styles.highlight}>scalability</span> and{" "}
-            <span className={styles.highlight}>reliability</span>.
+            <span className={styles.highlight}>Software Engineer</span> with a
+            focus on building <span className={styles.highlight}>scalable</span>{" "}
+            and <span className={styles.highlight}>reliable</span> backend
+            systems.
           </li>
-
           <li>
-            Currently, working as Software Engineer II at{" "}
+            Currently, working at{" "}
+            <span className={styles.highlight}>Edra Labs</span> as a{" "}
+            <span className={styles.highlight}>Founding Software Engineer</span>
+            .
+          </li>
+          <li>
+            Interested in Web development, Machine Learning and Blockchain
+            technologies.
+          </li>
+          <li>
+            Previously, worked at{" "}
+            <a href="https://wingify.com/" className={styles.highlight}>
+              Wingify
+            </a>{" "}
+            and helped build{" "}
             <a href="https://vwo.com/" className={styles.highlight}>
               VWO
             </a>
+            .
           </li>
-
           <li>
-            I prefer working in <span className={styles.highlight}>Go</span>,{" "}
+            I prefer working with <span className={styles.highlight}>Go</span>,{" "}
             <span className={styles.highlight}>Python</span> and{" "}
             <span className={styles.highlight}>TypeScript</span>.
           </li>
