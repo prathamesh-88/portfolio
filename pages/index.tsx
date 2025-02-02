@@ -65,6 +65,7 @@ export default function Home({ allArticlesData, allProjectsData }: HomeProps) {
           </li>
           <li>
             I prefer working with <span className={styles.highlight}>Go</span>,{" "}
+            <span className={styles.highlight}>Solidity</span>,{" "}
             <span className={styles.highlight}>Python</span> and{" "}
             <span className={styles.highlight}>TypeScript</span>.
           </li>
