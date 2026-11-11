@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Futures platform isolation at CoinDCX — Prathamesh Tamanekar</title>
+<meta name="description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+<meta name="theme-color" content="#f5f3ed">
+<link rel="canonical" href="https://prathamesh.online/work/futures/">
+<meta property="og:title" content="Futures platform isolation at CoinDCX — Prathamesh Tamanekar">
+<meta property="og:description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prathamesh.online/work/futures/">
+<script src="/assets/theme.js"></script>
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+<meta property="og:image" content="https://prathamesh.online/assets/social-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://prathamesh.online/assets/social-share.png">
+<meta name="twitter:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
+<meta name="twitter:title" content="Futures platform isolation at CoinDCX — Prathamesh Tamanekar">
+<meta name="twitter:description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+<header>
+<a class="brand" href="/">Prathamesh T.</a>
+<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a></nav>
+<label class="theme-control" hidden><span class="sr-only">Color theme</span><select id="theme" aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+</header>
+<main id="main" class="detail">
+<p class="label">CoinDCX · Platform isolation</p>
+<h1>Separating the futures platform from a monolith</h1>
+<p class="lead">I owned the separation of CoinDCX’s futures platform across application code and infrastructure.</p>
+<div class="diagram" role="img" aria-label="Futures code was extracted from a larger monolith into a separate service running on its own Amazon EKS cluster.">
+<div class="diagram-box">Before<small>Futures code within the monolith</small></div>
+<div class="diagram-arrow" aria-hidden="true">→</div>
+<div class="diagram-box">After<small>Separate service and Amazon EKS cluster</small></div>
+</div>
+<h2>Application separation</h2>
+<p>The futures code was part of a larger application. I extracted it into a separate service, establishing an application boundary outside the monolith.</p>
+<h2>Infrastructure migration</h2>
+<p>I also moved the service to a separate Amazon Elastic Kubernetes Service (EKS) cluster. My responsibility covered both the code extraction and the infrastructure migration.</p>
+<div class="actions"><a href="/#work">← Selected work</a><a href="mailto:prathamt3108@gmail.com">Contact me ↗</a></div>
+</main>
+<footer><span>© 2026 Prathamesh Tamanekar</span><span>Backend engineer · Bengaluru</span></footer>
+</div>
+</body>
+</html>

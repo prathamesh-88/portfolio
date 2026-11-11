@@ -1,0 +1,30 @@
+name: Validate static site
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static site
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Test the site validator
+        run: python3 -m unittest discover -s tests -v
+      - name: Check pages, links, metadata, and deployment configuration
+        run: python3 scripts/check_site.py
+      - name: Check theme JavaScript syntax
+        run: node --check public/assets/theme.js
