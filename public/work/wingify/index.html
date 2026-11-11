@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VWO data integrations at Wingify — Prathamesh Tamanekar</title>
-<meta name="description" content="Developed data import and export integrations for VWO at Wingify, supporting customer workflows and platform adoption.">
+<meta name="description" content="VWO integration launches, a Google Optimize experiment importer, a Shopify app, and a Google Tag Manager onboarding flow that generated 45+ leads.">
 <meta name="theme-color" content="#f5f3ed">
 <link rel="canonical" href="https://prathamesh.online/work/wingify/">
 <meta property="og:title" content="VWO data integrations at Wingify — Prathamesh Tamanekar">
-<meta property="og:description" content="Developed data import and export integrations for VWO at Wingify, supporting customer workflows and platform adoption.">
+<meta property="og:description" content="VWO integration launches, a Google Optimize experiment importer, a Shopify app, and a Google Tag Manager onboarding flow that generated 45+ leads.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prathamesh.online/work/wingify/">
 <script src="/assets/theme.js"></script>
@@ -24,29 +24,67 @@
 <meta name="twitter:image" content="https://prathamesh.online/assets/social-share.png">
 <meta name="twitter:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
 <meta name="twitter:title" content="VWO data integrations at Wingify — Prathamesh Tamanekar">
-<meta name="twitter:description" content="Developed data import and export integrations for VWO at Wingify, supporting customer workflows and platform adoption.">
+<meta name="twitter:description" content="VWO integration launches, a Google Optimize experiment importer, a Shopify app, and a Google Tag Manager onboarding flow that generated 45+ leads.">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="shell">
 <header>
 <a class="brand" href="/">Prathamesh T.</a>
-<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a></nav>
+<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a><a href="/assets/resume.pdf" download="Prathamesh-Tamanekar-Resume.pdf" aria-label="Download résumé (PDF)">Résumé</a></nav>
 <label class="theme-control" hidden><span class="sr-only">Color theme</span><select id="theme" aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
 </header>
 <main id="main" class="detail">
 <p class="label">Wingify · Integrations</p>
 <h1>Building data integrations for VWO</h1>
-<p class="lead">At Wingify, I developed integrations that let customers move data between VWO and their other tools.</p>
-<h2>Customer requirements</h2>
-<p>Customers needed to import data into VWO and export data to external tools as part of their existing workflows.</p>
-<h2>My contribution</h2>
-<p>As part of the integrations team, I built import and export connections to support those workflows.</p>
-<h2>Platform adoption</h2>
-<p>Compatibility with existing tools influenced customers’ decisions to adopt VWO. The integrations I worked on helped address that requirement.</p>
+<p class="lead">Integration engineering addressed both migration into VWO and adoption within customers’ existing toolchains.</p>
+<p class="case-role">Wingify Software Private Limited<br>Software Engineer I · <time datetime="2022-06">Jun 2022</time> – <time datetime="2023-05">May 2023</time><br>Software Engineer II · <time datetime="2023-05">May 2023</time> – <time datetime="2024-02">Feb 2024</time></p>
+<dl class="metrics metrics-single" aria-label="Onboarding outcome">
+<div><dt>Google Tag Manager onboarding flow</dt><dd><strong>45+ leads</strong> generated</dd></div>
+</dl>
+<nav class="case-nav" aria-label="Case study sections"><a href="#problem">Problem</a><a href="#constraints">Constraints</a><a href="#architecture">Architecture</a><a href="#decisions">Decisions</a><a href="#execution">Execution</a><a href="#impact">Impact</a></nav>
+<section class="case-section" aria-labelledby="problem">
+<h2 id="problem">Problem</h2>
+<p>Customers needed VWO to work with the tools they already used. Teams migrating from Google Optimize also needed to bring existing experiments into VWO.</p>
+<p>I worked on both needs: backend integrations for ongoing workflows and an importer for experiment migration.</p>
+</section>
+<section class="case-section" aria-labelledby="constraints">
+<h2 id="constraints">Constraints</h2>
+<p>The work spanned distinct external platforms rather than one customer workflow. I led integration builds and launches for Slack, Marketo, WordPress, Twilio Segment, and RudderStack.</p>
+<p>Experiment migration, onboarding, and marketplace distribution were separate pieces of the adoption problem. The Google Optimize importer, Google Tag Manager flow, and Shopify app served those different needs.</p>
+</section>
+<section class="case-section" aria-labelledby="architecture">
+<h2 id="architecture">Architecture</h2>
+<figure class="architecture">
+<figcaption>High-level experiment migration path</figcaption>
+<ol class="flow flow-three" aria-label="Google Optimize experiment migration">
+<li><strong>Google Optimize</strong><small>Existing experiments</small></li>
+<li><strong>Importer</strong><small>Migration component I built</small></li>
+<li><strong>VWO</strong><small>Imported experiments</small></li>
+</ol>
+</figure>
+<p>Alongside the importer, I designed and implemented backend architectures for third-party VWO integrations. The named integrations were separate deliveries from the experiment migration path shown here.</p>
+</section>
+<section class="case-section" aria-labelledby="decisions">
+<h2 id="decisions">Decisions</h2>
+<p>The work addressed adoption at different boundaries. The importer supported bringing existing experiments into VWO. Third-party integrations supported ongoing customer workflows. The Google Tag Manager onboarding flow and Shopify app addressed setup and marketplace presence.</p>
+</section>
+<section class="case-section" aria-labelledby="execution">
+<h2 id="execution">Execution</h2>
+<ul>
+<li>Built the Google Optimize experiment importer and backend architectures for third-party integrations.</li>
+<li>Led builds and launches for Slack, Marketo, WordPress, Twilio Segment, and RudderStack integrations.</li>
+<li>Built a Google Tag Manager onboarding flow.</li>
+<li>Built and deployed a Shopify app for VWO.</li>
+</ul>
+</section>
+<section class="case-section" aria-labelledby="impact">
+<h2 id="impact">Impact</h2>
+<p>The Google Tag Manager onboarding flow generated <strong>45+ leads</strong>. The Google Optimize importer helped convert migrating teams into customers, while the Shopify app increased marketplace visibility and improved its user experience.</p>
+</section>
 <div class="actions"><a href="/#work">← Selected work</a><a href="mailto:prathamt3108@gmail.com">Contact me ↗</a></div>
 </main>
-<footer><span>© 2026 Prathamesh Tamanekar</span><span>Backend engineer · Bengaluru</span></footer>
+<footer><span>© 2026 Prathamesh Tamanekar</span><span>Senior software engineer · Bengaluru</span></footer>
 </div>
 </body>
 </html>

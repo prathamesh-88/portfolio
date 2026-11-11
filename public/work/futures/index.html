@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Futures platform isolation at CoinDCX — Prathamesh Tamanekar</title>
-<meta name="description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+<meta name="description" content="Isolating CoinDCX’s futures platform from a Rails monolith: full unit tests from 40 to 10 minutes and component boot time from 3 minutes to 25 seconds.">
 <meta name="theme-color" content="#f5f3ed">
 <link rel="canonical" href="https://prathamesh.online/work/futures/">
 <meta property="og:title" content="Futures platform isolation at CoinDCX — Prathamesh Tamanekar">
-<meta property="og:description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+<meta property="og:description" content="Isolating CoinDCX’s futures platform from a Rails monolith: full unit tests from 40 to 10 minutes and component boot time from 3 minutes to 25 seconds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prathamesh.online/work/futures/">
 <script src="/assets/theme.js"></script>
@@ -24,32 +24,69 @@
 <meta name="twitter:image" content="https://prathamesh.online/assets/social-share.png">
 <meta name="twitter:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
 <meta name="twitter:title" content="Futures platform isolation at CoinDCX — Prathamesh Tamanekar">
-<meta name="twitter:description" content="Owned the separation of CoinDCX’s futures platform from a monolith, including code extraction and migration to a separate Amazon EKS cluster.">
+<meta name="twitter:description" content="Isolating CoinDCX’s futures platform from a Rails monolith: full unit tests from 40 to 10 minutes and component boot time from 3 minutes to 25 seconds.">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="shell">
 <header>
 <a class="brand" href="/">Prathamesh T.</a>
-<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a></nav>
+<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a><a href="/assets/resume.pdf" download="Prathamesh-Tamanekar-Resume.pdf" aria-label="Download résumé (PDF)">Résumé</a></nav>
 <label class="theme-control" hidden><span class="sr-only">Color theme</span><select id="theme" aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
 </header>
 <main id="main" class="detail">
 <p class="label">CoinDCX · Platform isolation</p>
 <h1>Separating the futures platform from a monolith</h1>
-<p class="lead">I owned the separation of CoinDCX’s futures platform across application code and infrastructure.</p>
-<div class="diagram" role="img" aria-label="Futures code was extracted from a larger monolith into a separate service running on its own Amazon EKS cluster.">
-<div class="diagram-box">Before<small>Futures code within the monolith</small></div>
+<p class="lead">A high-impact product needed a narrower change boundary—not the development overhead of the entire platform.</p>
+<p class="case-role">Senior Software Engineer, Futures Platform · CoinDCX<br><time datetime="2025-06">Jun 2025</time> – Present · Role period</p>
+<dl class="metrics" aria-label="Measured development improvements">
+<div><dt>Full unit test runtime</dt><dd>40 min → <strong>10 min</strong></dd></div>
+<div><dt>Component boot time</dt><dd>3 min → <strong>25 sec</strong></dd></div>
+</dl>
+<nav class="case-nav" aria-label="Case study sections"><a href="#problem">Problem</a><a href="#constraints">Constraints</a><a href="#architecture">Architecture</a><a href="#decisions">Decisions</a><a href="#execution">Execution</a><a href="#impact">Impact</a></nav>
+<section class="case-section" aria-labelledby="problem">
+<h2 id="problem">Problem</h2>
+<p>Futures was a higher-revenue, higher-impact product relative to the platform’s other products. Yet even futures-specific initiatives required considering touchpoints across products because the code lived in a shared Ruby on Rails monolith.</p>
+<p>The shared application also imposed a slow feedback loop: the full unit test suite took 40 minutes, and component boot time was 3 minutes. A futures change carried the development overhead of the larger application.</p>
+</section>
+<section class="case-section" aria-labelledby="constraints">
+<h2 id="constraints">Constraints</h2>
+<p>The starting point was an existing multi-product Rails application, not an independent service. The extraction had to address the application boundary as well as where the futures platform ran.</p>
+<p>Moving infrastructure alone would leave the shared code boundary in place. The work therefore covered code segregation and a separate deployment environment.</p>
+</section>
+<section class="case-section" aria-labelledby="architecture">
+<h2 id="architecture">Architecture</h2>
+<figure class="architecture">
+<figcaption>High-level application and infrastructure boundaries</figcaption>
+<div class="diagram" role="img" aria-label="Before: futures code lived in a multi-product Rails monolith. After: the extracted futures application ran in a separate Amazon EKS cluster.">
+<div class="diagram-box">Before<small>Futures code inside the multi-product Rails monolith</small></div>
 <div class="diagram-arrow" aria-hidden="true">→</div>
-<div class="diagram-box">After<small>Separate service and Amazon EKS cluster</small></div>
+<div class="diagram-box">After<small>Extracted futures application in a separate Amazon EKS cluster</small></div>
 </div>
-<h2>Application separation</h2>
-<p>The futures code was part of a larger application. I extracted it into a separate service, establishing an application boundary outside the monolith.</p>
-<h2>Infrastructure migration</h2>
-<p>I also moved the service to a separate Amazon Elastic Kubernetes Service (EKS) cluster. My responsibility covered both the code extraction and the infrastructure migration.</p>
+</figure>
+<p>The application boundary came from extracting the futures code. The infrastructure boundary came from migrating it to a separate Amazon Elastic Kubernetes Service (EKS) cluster. These were complementary parts of the isolation effort.</p>
+</section>
+<section class="case-section" aria-labelledby="decisions">
+<h2 id="decisions">Decisions</h2>
+<ul>
+<li><strong>Separate the code, not just its hosting.</strong> Code segregation addressed the broad application footprint behind futures development, tests, and startup.</li>
+<li><strong>Give futures a separate cluster.</strong> The extracted application also received its own infrastructure boundary rather than remaining in the original shared environment.</li>
+<li><strong>Accept another environment to operate.</strong> Isolation brings a separate application and cluster to maintain; the benefit was a narrower change boundary for a business-critical product.</li>
+</ul>
+</section>
+<section class="case-section" aria-labelledby="execution">
+<h2 id="execution">Execution</h2>
+<p>I owned planning and implementation of the isolation initiative. My scope included segregating the futures code from the monolith and migrating the extracted platform to the separate EKS cluster.</p>
+<p>This was both an application extraction and an infrastructure migration, rather than a cluster move alone.</p>
+</section>
+<section class="case-section" aria-labelledby="impact">
+<h2 id="impact">Impact</h2>
+<p>Isolation limited the blast radius of futures-specific work and remediated the development-loop pain points. Full unit test runtime fell from <strong>40 to 10 minutes</strong>, while component boot time fell from <strong>3 minutes to 25 seconds</strong>.</p>
+<p>These are development and component-startup improvements, not claims about exchange request latency or production uptime.</p>
+</section>
 <div class="actions"><a href="/#work">← Selected work</a><a href="mailto:prathamt3108@gmail.com">Contact me ↗</a></div>
 </main>
-<footer><span>© 2026 Prathamesh Tamanekar</span><span>Backend engineer · Bengaluru</span></footer>
+<footer><span>© 2026 Prathamesh Tamanekar</span><span>Senior software engineer · Bengaluru</span></footer>
 </div>
 </body>
 </html>

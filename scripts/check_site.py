@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 
 
 ORIGIN = "https://prathamesh.online"
+CASE_SECTIONS = ["Problem", "Constraints", "Architecture", "Decisions", "Execution", "Impact"]
 
 
 class Page(HTMLParser):
@@ -21,6 +22,11 @@ class Page(HTMLParser):
         self.h1_count = 0
         self.in_title = False
         self.title = ""
+        self.in_h2 = False
+        self.heading = ""
+        self.sections = []
+        self.in_main_navigation = False
+        self.resume_download = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -33,6 +39,14 @@ class Page(HTMLParser):
             self.h1_count += 1
         if tag == "title":
             self.in_title = True
+        if tag == "h2":
+            self.in_h2 = True
+            self.heading = ""
+        if tag == "nav":
+            self.in_main_navigation = attrs.get("aria-label") == "Main navigation"
+        if (tag == "a" and self.in_main_navigation
+                and attrs.get("href") == "/assets/resume.pdf" and "download" in attrs):
+            self.resume_download = True
         if tag == "meta":
             key = attrs.get("name") or attrs.get("property")
             self.metadata[key] = attrs.get("content", "")
@@ -47,10 +61,17 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "title":
             self.in_title = False
+        if tag == "h2":
+            self.in_h2 = False
+            self.sections.append(self.heading.strip())
+        if tag == "nav":
+            self.in_main_navigation = False
 
     def handle_data(self, data):
         if self.in_title:
             self.title += data
+        if self.in_h2:
+            self.heading += data
 
 
 def validate_site(repository):
@@ -60,9 +81,13 @@ def validate_site(repository):
     pages = {}
     expected_urls = set()
 
-    for required in ("index.html", "404.html", "robots.txt", "sitemap.xml"):
+    for required in ("index.html", "404.html", "robots.txt", "sitemap.xml", "assets/resume.pdf"):
         if not (public / required).is_file():
             errors.append(f"public/{required}: required file is missing")
+
+    resume = public / "assets/resume.pdf"
+    if resume.is_file() and not resume.read_bytes().startswith(b"%PDF-"):
+        errors.append("public/assets/resume.pdf: expected a PDF file")
 
     for path in sorted(public.rglob("*.html")):
         page = Page()
@@ -82,6 +107,10 @@ def validate_site(repository):
             errors.append(f"{name}: duplicate IDs: {sorted(page.duplicate_ids)}")
         if page.canonical != [ORIGIN + route]:
             errors.append(f"{name}: canonical URL must be {ORIGIN + route}")
+        if not page.resume_download:
+            errors.append(f"{name}: main navigation must include a résumé download")
+        if (public / "work") in path.parents and page.sections != CASE_SECTIONS:
+            errors.append(f"{name}: case study sections must be {', '.join(CASE_SECTIONS)} in order")
         for key in ("description", "viewport", "og:title", "og:description",
                     "og:url", "og:image", "twitter:card", "twitter:image"):
             if not page.metadata.get(key, "").strip():
@@ -147,4 +176,4 @@ if __name__ == "__main__":
         for error in errors:
             print(f"ERROR: {error}")
         raise SystemExit(1)
-    print("PASS: static pages, internal links, anchors, metadata, sitemap, and Vercel configuration")
+    print("PASS: static pages, case studies, résumé downloads, links, metadata, sitemap, and Vercel configuration")

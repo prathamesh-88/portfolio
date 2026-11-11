@@ -8,3 +8,171 @@ header{gap:24px}header nav{margin-left:auto}.theme-control[hidden]{display:none}
 
 /* Keep the text-led introduction readable after removing the portrait. */
 .hero .intro{max-width:680px}.hero h1{max-width:960px}nav a{font-weight:500}.number{font-size:12px}
+
+/* Case studies share the homepage palette and remain readable without scripts. */
+.actions {
+  flex-wrap: wrap;
+  row-gap: 16px;
+}
+
+.career-date {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.career-row .work-link {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.case-role {
+  font-size: 14px;
+}
+
+.case-nav {
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 28px 0 36px;
+}
+
+.case-nav a {
+  text-decoration: underline;
+}
+
+.detail .case-section {
+  padding: 0;
+  margin: 40px 0;
+  border: 0;
+}
+
+.detail .case-section h2 {
+  margin: 0 0 16px;
+}
+
+.detail li + li {
+  margin-top: 12px;
+}
+
+.detail strong {
+  color: var(--ink);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.metrics > div {
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.metrics dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.metrics dd {
+  margin: 10px 0 0;
+  font-size: clamp(22px, 3.5vw, 32px);
+  line-height: 1.3;
+  letter-spacing: -.03em;
+}
+
+.metrics-single {
+  grid-template-columns: 1fr;
+}
+
+.architecture {
+  margin: 28px 0;
+}
+
+.architecture figcaption {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.diagram-box {
+  min-width: 0;
+}
+
+.diagram-box small,
+.system-grid small,
+.flow small {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.detail .flow,
+.detail .system-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 16px 0;
+  list-style: none;
+}
+
+.detail .flow-three,
+.detail .system-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.detail .flow li,
+.detail .system-grid li {
+  min-width: 0;
+  padding: 18px;
+  margin: 0;
+  border: 1px solid var(--line);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.flow {
+  counter-reset: stage;
+}
+
+.flow li::before {
+  counter-increment: stage;
+  content: counter(stage, decimal-leading-zero);
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font: 600 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+@media (max-width: 760px) {
+  header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  header .brand {
+    flex-basis: 100%;
+  }
+
+  header nav {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-left: 0;
+  }
+
+  header .theme-control {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics,
+  .detail .flow,
+  .detail .system-grid {
+    grid-template-columns: 1fr;
+  }
+}

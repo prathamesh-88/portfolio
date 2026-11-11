@@ -18,7 +18,7 @@ class SiteValidationTests(unittest.TestCase):
 
     def change_home(self, old, new):
         home = self.root / "public/index.html"
-        home.write_text(home.read_text().replace(old, new, 1))
+        home.write_text(home.read_text(encoding="utf-8").replace(old, new, 1), encoding="utf-8")
 
     def assert_error(self, text):
         errors = validate_site(self.root)
@@ -30,6 +30,26 @@ class SiteValidationTests(unittest.TestCase):
     def test_missing_asset(self):
         (self.root / "public/assets/style.css").unlink()
         self.assert_error("missing link target: /assets/style.css")
+
+    def test_missing_resume(self):
+        (self.root / "public/assets/resume.pdf").unlink()
+        self.assert_error("public/assets/resume.pdf: required file is missing")
+
+    def test_resume_must_be_pdf(self):
+        (self.root / "public/assets/resume.pdf").write_bytes(b"Not a PDF")
+        self.assert_error("expected a PDF file")
+
+    def test_resume_download_in_main_navigation(self):
+        self.change_home(' download="Prathamesh-Tamanekar-Resume.pdf"', '')
+        self.assert_error("main navigation must include a résumé download")
+
+    def test_case_study_sections(self):
+        case = self.root / "public/work/futures/index.html"
+        case.write_text(
+            case.read_text(encoding="utf-8").replace('id="problem">Problem', 'id="problem">Context'),
+            encoding="utf-8",
+        )
+        self.assert_error("case study sections must be")
 
     def test_missing_anchor(self):
         self.change_home('href="#work"', 'href="#missing"')

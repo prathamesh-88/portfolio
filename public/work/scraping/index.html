@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAG-backed scraping at Edra Labs — Prathamesh Tamanekar</title>
+<meta name="description" content="A generic LLM-driven scraper using RAG-based web-page indexing and Qdrant retrieval. Scraping an OEM website fell from roughly 2 days to 2 hours.">
+<meta name="theme-color" content="#f5f3ed">
+<link rel="canonical" href="https://prathamesh.online/work/scraping/">
+<meta property="og:title" content="RAG-backed scraping at Edra Labs — Prathamesh Tamanekar">
+<meta property="og:description" content="A generic LLM-driven scraper using RAG-based web-page indexing and Qdrant retrieval. Scraping an OEM website fell from roughly 2 days to 2 hours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prathamesh.online/work/scraping/">
+<script src="/assets/theme.js"></script>
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+<meta property="og:image" content="https://prathamesh.online/assets/social-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://prathamesh.online/assets/social-share.png">
+<meta name="twitter:image:alt" content="Prathamesh Tamanekar — Backend Engineer. Backend engineering. From services to infrastructure.">
+<meta name="twitter:title" content="RAG-backed scraping at Edra Labs — Prathamesh Tamanekar">
+<meta name="twitter:description" content="A generic LLM-driven scraper using RAG-based web-page indexing and Qdrant retrieval. Scraping an OEM website fell from roughly 2 days to 2 hours.">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+<header>
+<a class="brand" href="/">Prathamesh T.</a>
+<nav aria-label="Main navigation"><a href="/#work">Work</a><a href="/#about">About</a><a href="/#writing">Writing</a><a href="/assets/resume.pdf" download="Prathamesh-Tamanekar-Resume.pdf" aria-label="Download résumé (PDF)">Résumé</a></nav>
+<label class="theme-control" hidden><span class="sr-only">Color theme</span><select id="theme" aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+</header>
+<main id="main" class="detail">
+<p class="label">Edra Labs · LLM-backed scraping</p>
+<h1>Building RAG-backed scraping infrastructure</h1>
+<p class="lead">A generic scraper combined LLM-backed processing with retrieval over indexed website content.</p>
+<p class="case-role">Founding Engineer · Edra Labs LLC<br><time datetime="2024-03">Mar 2024</time> – <time datetime="2025-05">May 2025</time> · Role period</p>
+<dl class="metrics metrics-single" aria-label="Observed scraping improvement">
+<div><dt>Scraping time for an OEM website</dt><dd>Roughly 2 days → <strong>2 hours</strong></dd></div>
+</dl>
+<nav class="case-nav" aria-label="Case study sections"><a href="#problem">Problem</a><a href="#constraints">Constraints</a><a href="#architecture">Architecture</a><a href="#decisions">Decisions</a><a href="#execution">Execution</a><a href="#impact">Impact</a></nav>
+<section class="case-section" aria-labelledby="problem">
+<h2 id="problem">Problem</h2>
+<p>At Edra Labs, I built the admin dashboard, search engine, and scraping pipeline for the launches of allmachines.com and coveted.com. Gathering information from websites was one of the product workflows that needed less manual effort.</p>
+<p>For an original equipment manufacturer (OEM) website, the scraping task took roughly 2 days before the generic LLM-driven scraper brought it down to 2 hours.</p>
+</section>
+<section class="case-section" aria-labelledby="constraints">
+<h2 id="constraints">Constraints</h2>
+<p>The work was a generic web scraper, rather than a one-off extraction for a single page. The pipeline needed a way to index page content and retrieve information from the resulting chunks.</p>
+<p>The recorded timing improvement applies to an OEM website, rather than being a benchmark across all websites.</p>
+</section>
+<section class="case-section" aria-labelledby="architecture">
+<h2 id="architecture">Architecture</h2>
+<figure class="architecture">
+<figcaption>High-level retrieval path inside the LLM-backed pipeline</figcaption>
+<ol class="flow" aria-label="Page indexing and retrieval stages">
+<li><strong>Web pages</strong><small>Source content</small></li>
+<li><strong>Indexed chunks</strong><small>RAG-based page indexing</small></li>
+<li><strong>Qdrant</strong><small>Vector store supporting retrieval</small></li>
+<li><strong>Information retrieval</strong><small>Use the indexed chunks</small></li>
+</ol>
+</figure>
+<p>The pipeline used retrieval-augmented generation (RAG) techniques to index web pages. Qdrant served as the vector store, and the indexed chunks were used for information retrieval.</p>
+</section>
+<section class="case-section" aria-labelledby="decisions">
+<h2 id="decisions">Decisions</h2>
+<ul>
+<li><strong>Make indexing and retrieval explicit.</strong> Page content became indexed chunks that the pipeline could retrieve from, rather than leaving information retrieval as an unspecified LLM step.</li>
+<li><strong>Use Qdrant for the vector index.</strong> The vector store was a concrete part of the implemented retrieval architecture.</li>
+<li><strong>Keep the index in the system boundary.</strong> RAG adds stored content to manage alongside LLM-backed processing; the scraper was not just a standalone prompt.</li>
+</ul>
+</section>
+<section class="case-section" aria-labelledby="execution">
+<h2 id="execution">Execution</h2>
+<p>I developed the generic LLM-driven scraper as part of the scraping infrastructure. The implemented pipeline combined RAG-based web-page indexing, Qdrant, and information retrieval over the indexed chunks.</p>
+<p>This technical work sat alongside the admin dashboard and search engine I built for the product launches. <a href="/work/edra/">Product engineering, workflow automation, and leadership contributions</a> are covered separately.</p>
+</section>
+<section class="case-section" aria-labelledby="impact">
+<h2 id="impact">Impact</h2>
+<p>Scraping an OEM website went from <strong>roughly 2 days to 2 hours</strong>, reducing manual effort for that workflow.</p>
+</section>
+<div class="actions"><a href="/#work">← Selected work</a><a href="/work/edra/">More work at Edra Labs ↗</a></div>
+</main>
+<footer><span>© 2026 Prathamesh Tamanekar</span><span>Senior software engineer · Bengaluru</span></footer>
+</div>
+</body>
+</html>
