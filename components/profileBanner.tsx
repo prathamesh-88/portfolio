@@ -12,11 +12,11 @@ export default function ProfileBanner() {
         className={styles.profilePicture}
         height={1080}
         width={1080}
-        alt=""
+        alt="Prathamesh Tamanekar"
       />
       <div className={styles.nameSection}>
         <span className={styles.name}>Prathamesh Tamanekar</span>
-        <span className={styles.designation}>Backend Developer</span>
+        <span className={styles.designation}>Software Engineer at CoinDCX</span>
       </div>
 
       <div className={styles.socialIcons}>

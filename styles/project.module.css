@@ -1,22 +1,25 @@
 .projectContainer {
   display: flex;
-  height: 150px;
+  min-height: 150px;
 }
 
 .imageContainer {
-  width: 20%;
+  width: 28%;
+  padding: var(--space-3);
 }
 
 .imageContainer .image {
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
+  height: 100%;
+  object-fit: cover;
 }
 
 .metadata {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 75%;
-  padding: 0.5rem 1rem;
+  width: 72%;
+  padding: var(--space-4) var(--space-5);
 }
 
 @media only screen and (max-width: 768px) {

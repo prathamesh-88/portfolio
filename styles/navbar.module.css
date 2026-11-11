@@ -1,27 +1,79 @@
 .navbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 60%;
-	margin-bottom: 10px;
-	min-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100% - 3rem, var(--content-max-width));
+  min-height: 4.5rem;
+  margin: 0 auto;
 }
 
-.navbar nav a {
-	color: var(--text-color);
-	border-radius: 0;
-	font-size: 1.1rem;
+.brand {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
 }
 
-.navbar nav a:hover {
-	border-bottom: 2px solid var(--accent-color);
+.brand img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.45rem;
 }
 
-@media only screen and (max-width: 768px) {
-	.navbar {
-		display: block;
-		width: 100%;
-		padding: 0;
-		min-width: 0;
-	}
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.navActions { display: flex; align-items: center; gap: var(--space-2); }
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1.05rem;
+}
+
+.link {
+  display: inline-flex;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-sm);
+  color: var(--subtext-color);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--accent-soft-color);
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.menuButton {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--secondary-color);
+  color: var(--text-color);
+  font: inherit;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 700px) {
+  .navbar { width: min(100% - 2rem, var(--content-max-width)); }
+  .menuButton { display: inline-flex; align-items: center; justify-content: center; }
+  .links { position: absolute; top: calc(100% + 0.5rem); left: 1rem; right: 1rem; display: none; flex-direction: column; align-items: stretch; gap: var(--space-1); padding: var(--space-2); border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--surface-raised-color); box-shadow: var(--shadow-md); }
+  .linksOpen { display: flex; }
+  .link { padding: 0.7rem 0.8rem; }
 }

@@ -1,5 +1,4 @@
 import { Article } from "@/types";
-import fetch from "node-fetch";
 
 interface IDevToArticle {
   type_of: string;
@@ -8,7 +7,7 @@ interface IDevToArticle {
   description: string;
   url: string;
   published_timestamp: string;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 function formatArticle(rawArticle: IDevToArticle): Article {
@@ -23,7 +22,7 @@ function formatArticle(rawArticle: IDevToArticle): Article {
 
 export async function getBlogPosts(): Promise<Article[]> {
   if (!process.env.DEVTO_API_KEY) {
-    throw new Error("Dev.to API Key is not set");
+    return [];
   }
   const rawPostsResponse = await fetch("https://dev.to/api/articles/me", {
     headers: {

@@ -1,104 +1,82 @@
 .wrapper {
-  height: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: var(--primary-color);
   color: var(--text-color);
 }
 
 .headerContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-color);
-}
-
-.homeFlexDirection {
-  flex-direction: row;
-}
-
-.otherFlexDirection {
-  flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--primary-color) 92%, transparent);
+  backdrop-filter: blur(14px);
 }
 
 .contentLayout {
-  align-self: center;
-  width: 60vw;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  background-color: var(--primary-color);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  grid-template-areas: "content banner";
+  gap: clamp(2rem, 5vw, 5rem);
+  width: min(100% - 3rem, var(--content-max-width));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 5rem) 0;
 }
 
 .articlesContainer {
-  width: 10%;
-  margin-right: 0.7rem;
-  background-color: transparent;
+  display: none;
 }
 
 .contentContainer {
-  min-width: 750px;
-  width: 65%;
-  margin-right: 0.7rem;
+  grid-area: content;
+  min-width: 0;
 }
 
 .bannerContainer {
-  width: 25%;
-  max-width: 500px;
+  grid-area: banner;
+  align-self: start;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
 }
 
 .backToHome {
-  margin: 3rem 0;
+  margin-top: var(--space-7);
 }
 
 .backToHome a {
   color: var(--text-color);
 }
 
-.backToHome a:hover {
-  text-decoration: none;
-}
-
 .footerWrapper {
+  border-top: 1px solid var(--border-color);
   background-color: var(--primary-color);
   color: var(--text-color);
 }
 
-@media only screen and (max-width: 1200px) {
-  .headerContainer {
-    width: 100%;
-    display: flex;
-    padding: 0 1rem;
-  }
+@media (max-width: 900px) {
   .contentLayout {
-    flex-direction: column-reverse;
-    width: 100%;
-    padding: 0 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "content" "banner";
+    gap: var(--space-7);
+    width: min(100% - 2rem, 44rem);
+    padding: var(--space-6) 0 var(--space-7);
   }
-  .homeFlexDirection {
-    flex-direction: column-reverse;
-  }
-  .otherFlexDirection {
-    flex-direction: column;
-  }
+
   .bannerContainer {
-    width: 100%;
+    width: min(100%, 24rem);
+    justify-self: center;
   }
-  .contentContainer {
-    width: 100%;
-    margin: 0;
-    min-width: 0;
-  }
-  .articlesContainer {
-    display: none;
-    margin: 0;
-  }
+
   .mobileHidden {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentLayout {
+    width: min(100% - 1.25rem, 44rem);
+    padding-top: var(--space-5);
   }
 }

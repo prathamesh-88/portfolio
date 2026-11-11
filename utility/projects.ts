@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { Project } from "@/types";
 
 const projectsDirectory = path.join(process.cwd(), "projects");
 
@@ -41,7 +42,6 @@ function parseAllFilesInDirectory(directoryPath: string): object[] {
   }
 }
 
-export function getProjects() {
-  const projects = parseAllFilesInDirectory(projectsDirectory);
-  return projects;
+export function getProjects(): Project[] {
+  return parseAllFilesInDirectory(projectsDirectory) as Project[];
 }

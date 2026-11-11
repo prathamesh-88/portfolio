@@ -1,6 +1,6 @@
 {
   "title": "YelpCamp",
-  "description": "A fullstack NodeJS application. It's a Yelp clone for campgrounds.",
+  "description": "A full-stack Node.js application for discovering and reviewing campgrounds",
   "link": "https://github.com/prathamesh-88/yelpcamp",
   "date": "2020-01-01"
 }

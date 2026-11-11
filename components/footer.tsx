@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../styles/layout.module.css";
 
 import {
@@ -11,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { ReactNode } from "react";
-import Image from "next/image";
 
 const SocialButton = ({
   children,

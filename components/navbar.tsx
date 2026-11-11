@@ -1,89 +1,61 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  useDisclosure,
-  Stack,
-} from "@chakra-ui/react";
+"use client";
+
 import Image from "next/image";
-
-import styles from "../styles/navbar.module.css";
-
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import { useState } from "react";
+import styles from "../styles/navbar.module.css";
+import ThemeToggle from "./themeToggle";
 
-interface Props {
-  children: React.ReactNode;
-  link: string;
-}
+const links = [
+  { label: "Home", href: "/" },
+  { label: "Articles", href: "/articles" },
+];
 
-const Links: { [k: string]: string } = {
-  Home: "/",
-  Articles: "/articles",
-  Projects: "/projects",
-};
-const LinksList = Object.keys(Links);
-
-const NavLink = (props: Props) => {
-  const { children, link } = props;
-
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-      }}
-      href={link}
-    >
-      {children}
-    </Box>
-  );
-};
-
-export default function Simple() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <Box className={styles.navbar} px={4}>
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-        <HStack spacing={8} alignItems={"center"}>
-          <Box className={styles.logo}>
-            <Link href="/">
-              <Image alt="Logo" src="/images/logo.png" width={40} height={40} />
-            </Link>
-          </Box>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {LinksList.map((link) => (
-              <NavLink key={link} link={Links[link]}>
-                {link}
-              </NavLink>
-            ))}
-          </HStack>
-        </HStack>
-        <IconButton
-          size={"md"}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={"Open Menu"}
-          display={{ md: "none" }}
-          onClick={isOpen ? onClose : onOpen}
+    <nav className={styles.navbar} aria-label="Primary navigation">
+      <Link
+        className={styles.brand}
+        href="/"
+        aria-label="Prathamesh Tamanekar home"
+      >
+        <Image
+          alt="PT monogram"
+          src="/images/logo.png"
+          width={36}
+          height={36}
+          priority
         />
-      </Flex>
-
-      {isOpen ? (
-        <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
-            {LinksList.map((link) => (
-              <NavLink key={link} link={Links[link]}>
-                {link}
-              </NavLink>
-            ))}
-          </Stack>
-        </Box>
-      ) : null}
-    </Box>
+      </Link>
+      <div className={styles.navActions}>
+        <div
+          className={`${styles.links} ${isOpen ? styles.linksOpen : ""}`}
+          id="primary-links"
+        >
+          {links.map(({ label, href }) => (
+            <Link
+              className={styles.link}
+              href={href}
+              key={href}
+              onClick={() => setIsOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+        <ThemeToggle />
+        <button
+          className={styles.menuButton}
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls="primary-links"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? "×" : "☰"}
+        </button>
+      </div>
+    </nav>
   );
 }

@@ -1,6 +1,6 @@
 {
   "title": "Image Compression Using Generative Adversarial Networks",
-  "description": "An image compression algorithm powered by Generative Adversarial Networks (GANs)",
+  "description": "A Generative Adversarial Network (GAN) based approach to image compression",
   "image": "/projects/image.jpg",
   "link": "https://github.com/prathamesh-88/gan-image-compression",
   "date": "2022-05-07"

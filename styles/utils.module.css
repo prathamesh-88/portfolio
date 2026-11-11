@@ -11,37 +11,34 @@
 }
 
 .heading2Xl {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  margin: 1rem 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  margin: 0;
 }
 
 .headingXl {
-  font-size: 2rem;
-  line-height: 1.3;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  text-transform: uppercase;
-  letter-spacing: 7px;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
   font-weight: 700;
-  width: fit-content;
+  letter-spacing: -0.035em;
+  margin: 0;
 }
 
 .headingLg {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin: 1rem 0;
-  text-transform: uppercase;
-  letter-spacing: 7px;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.25;
+  margin: 0;
   font-weight: 700;
-  width: fit-content;
+  letter-spacing: -0.025em;
 }
 
 .headingMd {
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 .colorInherit {
@@ -63,25 +60,41 @@
 }
 
 .listItem {
-  margin: 0 0 1.25rem;
+  margin: 0 0 var(--space-4);
 }
 
 .lightText {
-  color: #666;
+  color: var(--subtext-color);
 }
 
 .card {
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   background: var(--secondary-color);
   color: var(--text-color);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.list a:hover .card {
+  background: var(--card-hover-bg);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .cardPadding {
-  padding: 0.4rem 1rem;
+  padding: var(--space-5);
 }
 
 .smallerText {
-  font-size: 01rem;
+  color: var(--subtext-color);
+  font-size: 0.98rem;
+  line-height: 1.65;
 }
 
 .justifyText {
@@ -89,18 +102,27 @@
 }
 
 .btn {
-  height: 2rem;
-  font-size: 1rem;
-  border-radius: 5px;
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
   background-color: transparent;
-  border: solid 2px var(--text-color);
+  border: 1px solid var(--border-color);
   color: var(--text-color);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .btn:hover {
-  background-color: var(--text-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
   color: var(--primary-color);
   cursor: pointer;
+  transform: translateY(-1px);
 }
 
 .accent {
